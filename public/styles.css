@@ -1,0 +1,16 @@
+.main-div{
+    text-align: center;
+    margin: 2%; 
+    /* background-color: yellow;  */
+}
+
+
+/* Movie Info */
+.thumbs-outer{
+    display: flex;
+    justify-content: center;
+}
+
+a{
+    margin: 1%;
+}

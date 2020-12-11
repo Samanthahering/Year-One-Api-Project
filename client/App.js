@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchMovies} from '../store'
+import {Link} from 'react-router-dom'
 
 class App extends React.Component{
     constructor(props){
@@ -10,10 +11,6 @@ class App extends React.Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-    // componentDidMount(){
-    //     this.props.getMovies(this.state)
-    // }
 
     handleChange(event){
         this.setState({[event.target.name]: event.target.value})
@@ -28,11 +25,11 @@ class App extends React.Component{
     }
 
     render(){
-        console.log('props', this.props)
+        // console.log('props', this.props)
         console.log('body', this.props.movies)
         return(
-            <div>
-                 <div>Hello this is working!</div>
+            <div className='main-div'>
+                 <h1>Search for a Movie!</h1>
                  <form onSubmit={this.handleSubmit}>
                      <label>
                          Movie:
@@ -40,25 +37,11 @@ class App extends React.Component{
                      </label>
                      <input type='submit' value='Submit'/>
                  </form>
-                {/* <ul>
-                    {this.props.movies.length ? this.props.movies.body.titles.map((name) => {
-                            <li key={name.id}>{name.title}</li>
-                    }) : <h1>Sorry beeeeeetch</h1>}
-                </ul> */}
-
-            
-                    {/* {this.props.movies.length === 0 && this.state.firstTime === true ? null :  <h1>Sorry beeeeeetch</h1>} */}
-                    {/* {this.props.movies.length > 0 ? this.props.movies.body.titles.map((name) => {
-                            <li key={name.id}>{name.title}</li>
-                    }) : null} */}
                     <ul>
                         {this.props.movies.body === undefined ? null : this.props.movies.body.titles.map((name) => {
-                                return(<li key={name.id}>{name.title}</li>) 
+                                return(<Link to={`/${name.title}`}><li key={name.title} movies={name}>{name.title}</li></Link>) 
                         })}
                     </ul>
-                    
-
-           
             </div> 
         )
     }
